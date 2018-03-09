@@ -24,4 +24,9 @@ Route::get('/contact', function () {
 });
 
 
-Route::post('/send-email', 'MainController@sendEmail');
+Route::post('/send-email', 'HomeController@sendEmail');
+
+// This isnt magic... the actual routes are located at vender/laravel/framework/src/illuminate/routing/router.php
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

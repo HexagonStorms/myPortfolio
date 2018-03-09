@@ -7,8 +7,28 @@ use Log;
 use Mail;
 use Response;
 
-class MainController extends Controller
+class HomeController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('home');
+    }
+
     public function sendEmail(Request $request)
     {
         Mail::raw($request->message, function ($message) use ($request) {
